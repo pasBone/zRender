@@ -2,25 +2,19 @@
 export type Coord = { x: number, y: number }
 export type Coords = Coord[];
 
-export type Direction = 'left' | 'right';
-
-export type LinesData = {
-  id: '', // 用于和接口字段对比，然后赋值 value 
+export type CoordsData = {
   value: number,
   name: string, // 名称
   color: string, // 颜色
   coord: Coords,  // 贝塞尔曲线坐标
-  direction: Direction,   // 布局方向 - 左|右
-  isBoundary: boolean, // 是否是最下边的区域，会进行坐标中心点位置计算
-  nameOffset: number[], // 名称偏移量[x, y],
-  height: number,
-  offsetCord: Coord[]
+  id: string
+  // direction: 'left' | 'right'
 }
 
-export const linesLeft: LinesData[] = [
+export const leftCoords: CoordsData[] = [
   {
-    id: '',
     name: ' 光伏发电',
+    id: 'gffd',
     value: 160,
     color: "rgba(0, 168, 116)",
     coord: [
@@ -29,17 +23,12 @@ export const linesLeft: LinesData[] = [
       { x: 238, y: 232 },
       { x: 400, y: 232 },
     ],
-    direction: 'left',
-    isBoundary: false,
-    nameOffset: [-80, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: '',
-    value: 10,
+    id: 'gffd-branch',
+    value: 20,
     color: "rgba(0, 168, 116)",
     coord: [
       { x: 0, y: 279 },
@@ -47,35 +36,25 @@ export const linesLeft: LinesData[] = [
       { x: 117, y: 356 },
       { x: 168, y: 357 },
     ],
-    direction: 'left',
-    isBoundary: false,
-    nameOffset: [0, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: '',
+    id: 'sdfd-branch',
     value: 20,
-    color: "rgba(238, 186, 24)",
+    color: "rgba(138, 186, 24)",
     coord: [
       { x: 0, y: 430 },
       { x: 92, y: 416 },
       { x: 106, y: 340 },
       { x: 168, y: 357 },
     ],
-    direction: 'left',
-    isBoundary: false,
-    nameOffset: [-80, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: '市电发电',
-    value: 60,
+    id: 'sdfd',
+    value: 100,
     color: "rgba(238, 186, 24)",
     coord: [
       { x: 0, y: 518 },
@@ -83,36 +62,25 @@ export const linesLeft: LinesData[] = [
       { x: 176, y: 384 },
       { x: 400, y: 392 },
     ],
-    direction: 'left',
-    isBoundary: true,
-    nameOffset: [-80, 0],
-    height: 0,
-    offsetCord: []
   },
 
-  {
-    id: '',
-    name: '储能',
-    value: 30,
-    color: "rgba(191, 124, 240)",
-    coord: [
-      { x: 160, y: 350 },
-      { x: 224, y: 348 },
-      { x: 336, y: 372 },
-      { x: 402, y: 360 },
-    ],
-    direction: 'left',
-    isBoundary: false,
-    nameOffset: [-40, -5],
-    height: 0,
-    offsetCord: []
-  }
+  // {
+  //   name: '储能',
+  //   value: 30,
+  //   color: "rgba(191, 124, 240)",
+  //   coord: [
+  //     { x: 160, y: 350 },
+  //     { x: 224, y: 348 },
+  //     { x: 336, y: 372 },
+  //     { x: 402, y: 360 },
+  //   ],
+  // }
 ]
 
-export const linesRight: LinesData[] = [
+export const rightCoords: CoordsData[] = [
   {
-    id: '',
     name: ' 暖通',
+    id: 'nt',
     value: 80,
     color: "rgba(33, 112, 243)",
     coord: [
@@ -121,16 +89,11 @@ export const linesRight: LinesData[] = [
       { x: 566, y: 98 },
       { x: 776, y: 98 },
     ],
-    direction: 'right',
-    isBoundary: false,
-    nameOffset: [20, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: ' 插座',
+    id: 'cz',
     value: 20,
     color: "rgba(33, 112, 243)",
     coord: [
@@ -139,16 +102,11 @@ export const linesRight: LinesData[] = [
       { x: 637, y: 212 },
       { x: 776, y: 212 },
     ],
-    direction: 'right',
-    isBoundary: false,
-    nameOffset: [20, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: ' 充电桩',
+    id: 'cdz',
     value: 20,
     color: "rgba(33, 112, 243)",
     coord: [
@@ -157,16 +115,11 @@ export const linesRight: LinesData[] = [
       { x: 641, y: 276 },
       { x: 776, y: 275 },
     ],
-    direction: 'right',
-    isBoundary: false,
-    nameOffset: [20, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: ' 其他',
+    id: 'qt',
     value: 10,
     color: "rgba(33, 112, 243)",
     coord: [
@@ -175,16 +128,11 @@ export const linesRight: LinesData[] = [
       { x: 653, y: 346 },
       { x: 776, y: 344 },
     ],
-    direction: 'right',
-    isBoundary: false,
-    nameOffset: [20, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: ' 安防',
+    id: 'af',
     value: 20,
     color: "rgba(33, 112, 243)",
     coord: [
@@ -193,16 +141,11 @@ export const linesRight: LinesData[] = [
       { x: 682, y: 395 },
       { x: 776, y: 391 },
     ],
-    direction: 'right',
-    isBoundary: false,
-    nameOffset: [20, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: ' 电梯',
+    id: 'dt',
     value: 10,
     color: "rgba(33, 112, 243)",
     coord: [
@@ -211,28 +154,18 @@ export const linesRight: LinesData[] = [
       { x: 609, y: 430 },
       { x: 776, y: 428 },
     ],
-    direction: 'right',
-    isBoundary: false,
-    nameOffset: [20, 0],
-    height: 0,
-    offsetCord: []
   },
 
   {
-    id: '',
     name: ' 照明',
+    id: 'zm',
     value: 40,
     color: "rgba(33, 112, 243)",
     coord: [
       { x: 400, y: 392 },
       { x: 647, y: 391 },
       { x: 528, y: 514 },
-      { x: 776, y: 513 },
+      { x: 776, y: 518 },
     ],
-    direction: 'right',
-    isBoundary: true,
-    nameOffset: [20, 0],
-    height: 0,
-    offsetCord: []
   },
 ]
